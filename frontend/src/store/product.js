@@ -7,6 +7,9 @@ export const useProductStore = create((set) => ({
         if (!newProduct.name || !newProduct.price || !newProduct.image) {
             return { success: false, message: "Please fill in all fields." }
         }
+        if (isNaN(newProduct.price)) {
+            return { success: false, message: "Price must be a number." }
+        }
         const res = await fetch("/api/products", {
             method: "POST",
             headers: {
