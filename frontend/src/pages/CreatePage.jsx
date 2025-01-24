@@ -49,18 +49,21 @@ const CreatePage = () => {
                         <Input
                             placeholder='Product Name'
                             name='name'
+                            type='string'
                             value={newProduct.name}
                             onChange={(e) => setNewProduct({ ...newProduct, name: e.target.value })}
                         />
                         <Input
                             placeholder='Product Price'
                             name='price'
+                            type='number'
                             value={newProduct.price}
                             onChange={(e) => setNewProduct({ ...newProduct, price: e.target.value })}
                         />
                         <Input
-                            placeholder='Product Image'
+                            placeholder='Product Image URL'
                             name='image'
+                            type='string'
                             value={newProduct.image}
                             onChange={(e) => setNewProduct({ ...newProduct, image: e.target.value })}
                         />
