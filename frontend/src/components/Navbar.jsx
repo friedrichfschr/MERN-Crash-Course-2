@@ -28,10 +28,10 @@ const Navbar = () => {
                     bgGradient={"linear(to-r, cyan.400, blue.500)"}
                     bgClip={"text"}
                 >
-                    <Link to={"http://localhost:5173/"}>Product Store 🛒</Link>
+                    <Link to={"/"}>Product Store 🛒</Link>
                 </Text>
                 <HStack spacing={2} alignItems={"center"}>
-                    <Link to={"http://localhost:5173/create"}>
+                    <Link to={"/create"}>
                         <Button>
                             <PlusSquareIcon fontSize={20} />
                         </Button>
