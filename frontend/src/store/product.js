@@ -42,11 +42,13 @@ export const useProductStore = create((set) => ({
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(updateProduct)
+            body: JSON.stringify(updatedProduct)
         });
         const data = await res.json();
         if (!data.success) return { success: false, message: data.message };
+
         set((state) => ({
+            //this updates the Products on screen without having to reload the page
             products: state.products.map((product) => (product._id === pid ? data.data : product)),
         }));
         return { success: true, message: data.message };

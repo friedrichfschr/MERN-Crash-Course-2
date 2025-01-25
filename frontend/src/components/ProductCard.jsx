@@ -35,7 +35,7 @@ const ProductCard = ({ product }) => {
     const [updatedProduct, setUpdatedProduct] = useState(product)
 
     const toast = useToast()
-    const { deleteProduct } = useProductStore();
+    const { deleteProduct, updateProduct } = useProductStore();
 
 
     const handleDeleteProduct = async (pid) => {
@@ -58,7 +58,30 @@ const ProductCard = ({ product }) => {
             })
         }
     }
-    
+
+    const handleUpdateProduct = async (pid, updatedProduct) => {
+        const { success, message } = await updateProduct(pid, updatedProduct);
+        onClose();
+        if (!success) {
+            toast({
+                title: "Error",
+                description: message,
+                status: "error",
+                duration: 3000,
+                isClosable: true,
+            })
+        }
+        else {
+            toast({
+                title: "Success",
+                description: "Product updated successfully",
+                status: "success",
+                duration: 3000,
+                isClosable: true,
+            });
+        }
+    }
+
 
 
 
@@ -119,7 +142,7 @@ const ProductCard = ({ product }) => {
                         <Button
                             colorScheme='blue'
                             mr={3}
-                        // onClick={() => handleUpdateProduct(product._id, updatedProduct)}
+                            onClick={() => handleUpdateProduct(product._id, updatedProduct)}
                         >
                             Update
                         </Button>
